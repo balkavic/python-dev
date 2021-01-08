@@ -5,7 +5,7 @@ def greet_user(username):
 
 # greet_user("jim")
 
-def make_shirt(size, text):
+def make_shirt(size, text="I love Python"):
     print(f"Making shirt of size {size} with text '{text}'")
 
 # make_shirt("L", "This is my shirt")

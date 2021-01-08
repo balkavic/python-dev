@@ -11,15 +11,23 @@ if False:
     for topping in pizza['toppings']:
         print(f"\t{topping}")
 
-print("Which toppings would you like on your pizza?")
-toppings = []
-entered_topping = ""
+    print("Which toppings would you like on your pizza?")
+    toppings = []
+    entered_topping = ""
 
-while entered_topping != "quit":
-    entered_topping = input("Enter your topping or 'quit' to finish: ")
-    if entered_topping != "quit":
-        print(f"Adding topping {entered_topping} to the pizza")
-        toppings.append(entered_topping)
+    while entered_topping != "quit":
+        entered_topping = input("Enter your topping or 'quit' to finish: ")
+        if entered_topping != "quit":
+            print(f"Adding topping {entered_topping} to the pizza")
+            toppings.append(entered_topping)
 
-print("Ordered toppings: ")
-print(toppings)
+    print("Ordered toppings: ")
+    print(toppings)
+
+def make_pizza(size, *toppings):
+    print(f"Making a {size}-cm pizza with the following toppings:")
+    for topping in toppings:
+        print(f"- {topping}")
+
+# make_pizza(32, "cheese", "ham", "mushroom", "onion")
+

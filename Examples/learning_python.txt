@@ -1,0 +1,9 @@
+In Python you can define variables.
+In Python you can use operators.
+In Python you can write conditionals.
+In Python you can write loops
+In Python you can define classes.
+In Python you can read input from console.
+In Python you can write functions.
+In Python you can write content to files.
+In Python you can use exceptions.

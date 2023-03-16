@@ -1,36 +1,43 @@
+from entry import Entry
+from entry import LinkedEntry
 
 
 
-class Entry:
-    def __init__(self, k, v):
-        self.key = k
-        self.value = v
 
-class HastTable:
+
+class HashTable:
     def __init__(self, M=10):
         self.table = [None] * M
         self.M = M
+        self.N = 0
 
     def get(self, k):
         hc = hash(k) % self.M
-        return self.table[hc].value if self.table[hc] else None
+        while self.table[hc]:
+            if self.table[hc].key == k:
+                return self.table[hc].value
+            hc = (hc + 1) % self.M
+        return None
+
+    def get_hash(self, k):
+        for i in range(len(self.table)):
+            if self.table[i]:
+                if self.table[i].key == k:
+                    return i
+        return None
 
     def put(self, k, v):
         hc = hash(k) % self.M
-        entry = self.table[hc]
-        if entry:
-            if entry.key == k:
-                entry.value = v
-            else:
-                raise RuntimeError('Key Collision: {} and {}'.format(k, entry.key))
-        else:
-            self.table[hc] = Entry(k, v)
+        while self.table[hc]:
+            if self.table[hc].key == k:
+                self.table[hc].value = v
+                return
+            hc = (hc + 1) % self.M
+
+        if self.N >= self.M - 1:
+            raise RuntimeError('Table is full.')
+
+        self.table[hc] = Entry(k, v)
+        self.N += 1
 
 
-table = HastTable(1000)
-table.put("April", 30)
-table.put("May", 31)
-table.put("September", 30)
-
-print(table.get("August"))
-print(table.get("September"))
